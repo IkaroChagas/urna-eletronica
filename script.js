@@ -9,37 +9,66 @@ let numbers = document.querySelector('.division-1-3');
 
 // VARIÁVEIS DE CONTROLE DE AMBIENTE
 
-let actualStep = 0;
-let number = '';
+let actualStep = 0;  // Etapa atual
+let number = ''; // Os números serão preenchidos nessa variável
+let whiteVote = false;
+
 
 function startStep() {
 
     let step = steps[actualStep];
 
     let numberHtml = '';
+    number = '';
+    whiteVote = false;
 
-    numberHtml = '';
 
-    for(let i=0; i< step.numbers;i++) {
+    for(let i=0;i<step.numbers;i++) {
         if (i === 0) {
             numberHtml += '<div class="number flash"></div>';
-        } else {
-        numberHtml += '<div class="number"></div>';
-    }
+            } else {
+            numberHtml += '<div class="number"></div>';
+     }
+}
 
     yourVote.style.display = 'none';
     politicalOffice.innerHTML = step.title;
     generalDesc.innerHTML = '';
     generalWarning.style.display = 'none';
     lateral.innerHTML = '';
-    numbers.innerHTML = numberHtml
+    numbers.innerHTML = numberHtml;
 }
 
 function refreshInterface() {
+    let step = steps[actualStep]
+        let candidate = step.candidates.filter((item)=>{
 
+            if (item.number === number) {
+                return true;
+            } else  {
+                return false;
+            }
+            
+        });
+        if (candidate.length > 0) {
+            candidate = candidate[0];
+            yourVote.style.display = 'block';
+            generalWarning.style.display = 'block';
+            generalDesc.innerHTML = `Nome: ${candidate.name}<br/>Partido: ${candidate.camelCase}`;
+            
+            let photosHtml = '';
+            for(let i in candidate.photos);
+            photosHtml += `<div class="division-1-img"><img src="/images/${candidate.photos.url}" alt="">${candidate.photos[i].subtitle}</div>`;
+
+            lateral.innerHTML = photosHtml;
+        } else {
+            yourVote.style.display = 'block';
+            generalWarning.style.display = 'block';
+            generalDesc.innerHTML = '<div class="large-warning flash">VOTO NULO</div>';
+        }
 }
 
-function click(n) {
+function chooseNumber(n) {
     let numberElement = document.querySelector('.number.flash');
 
     if(numberElement !== null) {
@@ -52,20 +81,44 @@ function click(n) {
             numberElement.nextElementSibling.classList.add('flash');
         } else {
 
-        refreshInterface();
+            refreshInterface();
+        } 
     }
 }
 
-function white() {
 
+function white() {
+    if (number === '') {
+        whiteVote = true;
+        yourVote.style.display = 'block';
+        generalWarning.style.display = 'block';
+        numbers.innerHTML = '';
+        generalDesc.innerHTML = '<div class="large-warning flash">VOTO EM BRANCO</div>';
+        lateral.innerHTML= '';
+    }
 }
 
 function clear() {
-
+    startStep();
 }
 
 function confirm() {
+    if(whiteVote === true) {
 
+ } else if(number.length === step.numbers) {
+
+ }
+  if (voteConfirmed) {
+        actualStep+++;
+        if (steps[actualStep] !== undefined) {
+            startStep()
+        } else {
+            
+        }
+  }
 }
 
 startStep()
+
+
+

@@ -4,19 +4,19 @@ let steps = [
         numbers: 5,
         candidates: [
             {
-                number: 38111,
+                number: '38111',
                 name: 'Fulano de Tal',
-                political party: 'ABC',
-                pictures: [
-                    {url: 'candidato.jpg', subtitle: 'Vereador', small: false}
+                camelCase: 'STA',
+                photos: [
+                    {url: 'candidato-1', subtitle: 'Vereador', small: true}
                 ]
             },
             {
-                number: 77222,
+                number: '77222',
                 name: 'Beltrano da Silva',
-                political party: 'DEFG',
-                pictures: [
-                    {url: 'candidato.jpg', subtitle: 'Vereador',small: false}
+                camelCase: 'DEFG',
+                photos: [
+                    {url: 'candidato-2', subtitle: 'Vereador',small: true}
                 ]
             }
         ]
@@ -26,23 +26,23 @@ let steps = [
         numbers: 2,
         candidates: [
             {
-                number: 35,
+                number: '35',
                 name: 'João Bosco',
-                political party: 'STA',
+                camelCase: 'STA',
                 vice: 'Cic',
-                pictures: [
-                    {url: 'candidato.jpg', subtitle: 'Prefeito', small: false},
-                    {url: 'candidato.jpg', subtitle: 'Vice-Prefeito', small: true}
+                photos: [
+                    {url: 'candidato-3', subtitle: 'Prefeito', small: true},
+                    {url: 'candidato-1', subtitle: 'Vice-Prefeito', small: true}
                 ]
             },
             {
-                number: 84,
+                number: '84',
                 name: 'Márcio Paulo',
-                political party: 'QWERTY',
+                camelCase: 'QWERTY',
                 vice: 'Zul',
-                pictures: [
-                    {url: 'candidato.jpg', subtitle: 'Prefeito', small: false},
-                    {url: 'candidato.jpg', subtitle: 'Vice-Prefeito', small: true}
+                photos: [
+                    {url: 'candidato-2', subtitle: 'Prefeito', small: true},
+                    {url: 'candidato-3', subtitle: 'Vice-Prefeito', small: true}
                 ]
             }
         ]
