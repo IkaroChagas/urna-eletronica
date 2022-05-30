@@ -8,7 +8,7 @@ let steps = [
                 name: 'Fulano de Tal',
                 camelCase: 'STA',
                 photos: [
-                    {url: 'candidato-1', subtitle: 'Vereador', small: true}
+                    {url: 'candidato-1.png', subtitle: 'Vereador', small: true}
                 ]
             },
             {
@@ -16,7 +16,7 @@ let steps = [
                 name: 'Beltrano da Silva',
                 camelCase: 'DEFG',
                 photos: [
-                    {url: 'candidato-2', subtitle: 'Vereador',small: true}
+                    {url: 'candidato-2.png', subtitle: 'Vereador',small: true}
                 ]
             }
         ]
@@ -31,8 +31,8 @@ let steps = [
                 camelCase: 'STA',
                 vice: 'Cic',
                 photos: [
-                    {url: 'candidato-3', subtitle: 'Prefeito', small: true},
-                    {url: 'candidato-1', subtitle: 'Vice-Prefeito', small: true}
+                    {url: 'candidato-2.png', subtitle: 'Prefeito', small: false},
+                    {url: 'candidato-1.png', subtitle: 'Vice-Prefeito', small: true}
                 ]
             },
             {
@@ -41,10 +41,10 @@ let steps = [
                 camelCase: 'QWERTY',
                 vice: 'Zul',
                 photos: [
-                    {url: 'candidato-2', subtitle: 'Prefeito', small: true},
-                    {url: 'candidato-3', subtitle: 'Vice-Prefeito', small: true}
+                    {url: 'candidato-2.png', subtitle: 'Prefeito', small: false},
+                    {url: 'candidato-1.png', subtitle: 'Vice-Prefeito', small: true}
                 ]
-            }
+            },
         ]
     }
 ];

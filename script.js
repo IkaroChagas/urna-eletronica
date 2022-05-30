@@ -39,7 +39,8 @@ function startStep() { //ETAPA DE VOTAÇÃO ABERTA
     generalWarning.style.display = 'none';
     lateral.innerHTML = '';
     numbers.innerHTML = numberHtml;
-} // ETAPA DE VOTAÇÃO FECHADA
+
+}       // ETAPA DE VOTAÇÃO FECHADA
 
 function refreshInterface() {
     let step = steps[actualStep]
@@ -57,14 +58,16 @@ function refreshInterface() {
             candidate = candidate[0];
             yourVote.style.display = 'block';
             generalWarning.style.display = 'block';
-            generalDesc.innerHTML = `Nome: ${candidate.name}<br/>Partido: ${candidate.camelCase}`;
-            
+            generalDesc.innerHTML = `Nome: ${candidate.name}<br/>Partido:${candidate.camelCase}`;
             
             let photosHtml = '';
             for(let i in candidate.photos) {
-            photosHtml += `<div class="division-1-image"><img src="images/${candidate.photos[i].url}""alt=">${candidate.photos[i].subtitle}</div>`;
-            
-            }
+                if(candidate.photos[i].small) {
+                photosHtml += `<div class="division-1-image small"><img src="images/${candidate.photos[i].url}" "alt=""/>${candidate.photos[i].subtitle}</div>`;    
+            } else {
+                photosHtml += `<div class="division-1-image"><img src="images/${candidate.photos[i].url}" "alt=""/>${candidate.photos[i].subtitle}</div>`;    
+            } 
+        }
             lateral.innerHTML = photosHtml;
         } else {
             yourVote.style.display = 'block';
@@ -73,7 +76,7 @@ function refreshInterface() {
         }
 }
 
-function chooseNumber(n) {
+    function chooseNumber(n) {
     let numberElement = document.querySelector('.number.flash');
 
     if(numberElement !== null) {
@@ -92,42 +95,45 @@ function chooseNumber(n) {
 }
 
 function white() {
-    if (number === '') {
+        number = '';
         whiteVote = true;
         yourVote.style.display = 'block';
         generalWarning.style.display = 'block';
         numbers.innerHTML = '';
         generalDesc.innerHTML = '<div class="large-warning flash">VOTO EM BRANCO</div>';
         lateral.innerHTML= '';
-    }
 }
 
-function clear() {
+function clearVote() {
     startStep();
 }
 
-function confirm() {
+function confirmVote() {
+    let step = steps[actualStep];
+
+    let voteConfirmed = false;
+
     if(whiteVote === true) { // O botão confirmar só funciona se o botão votar em branco estiver verdadeiro "true"
        voteConfirmed = true;
        votes.push({
-           step: steps[actualStep].title
+           step: steps[actualStep].title,
            vote: 'whiteVote'
-       })
-    } else if(number.length === steps.numbers) {
+       });
+    } else if(number.length === step.numbers) {
        voteConfirmed = true;
        votes.push({
-        step: steps[actualStep].title
-        vote: 'number'
-    })
+        step: steps[actualStep].title,
+        vote: number
+    });
  }
   if (voteConfirmed) {
         actualStep++;
         if (steps[actualStep] !== undefined) {
             startStep()
         } else {
-            document.querySelector('.screen').innerHTML = '<div class="giant-warning flash">VOTO EM BRANCO</div>'
+            document.querySelector('.screen').innerHTML = '<div class="giant-warning flash">FIM</div>'
         }
-  }
+    }
 }
 
 startStep()
